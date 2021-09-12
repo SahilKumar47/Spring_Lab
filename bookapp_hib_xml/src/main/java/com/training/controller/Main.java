@@ -14,22 +14,21 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
 		BookService bookService = ctx.getBean("bookService", BookService.class);
+		// add Book
+//		Book book = new Book("23C", "headfirst", "abc", 1600);
+//		bookService.addBook(book);
 		List<Book> allBooks = bookService.getAllBooks();
 		allBooks.forEach(b -> System.out.println(b));
-		//add Book
-		Book book = new Book("23C", "headfirst", "abc", 1600);
-		bookService.addBook(book);
 		//update book
-		bookService.updateBook(3, 2500);
+		bookService.updateBook(1, 2500);
 		System.out.println("-------------------------------");
 		List<Book> remainingBooks = bookService.getAllBooks();
 		remainingBooks.forEach(b -> System.out.println(b));
 		// delete query
-		bookService.deleteBook(3);
+		bookService.deleteBook(2);
 		System.out.println("-----------------------------");
 		List<Book> remainingBook = bookService.getAllBooks();
 		remainingBook.forEach(b -> System.out.println(b));
-		
 
 	}
 }
